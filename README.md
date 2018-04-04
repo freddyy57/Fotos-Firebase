@@ -1,27 +1,53 @@
 # Fotosfirebase
 
+
+Carga fotos y las sube al storage de firebase
+
+Para iniciar esta aplicación tiene que ir primero a (https://firebase.google.com) y obtener una cuenta de firebase. Crear un proyecto nuevo llamado firebaseFotos
+
+En database de firestore elija Cloud Firestore
+
+Ponga en las reglas de la database esta regla:
+
+```
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
+```
+
+
+Vaya a proyect overview y elija agregar firebase a tu web app copie y pegue el contenido de sus credenciales en la carpeta: environments/enviroments.ts
+
+De la linea 9 a la 14
+
+```
+apiKey: "",
+authDomain: "",
+databaseURL: "",
+projectId: "",
+storageBucket: "",
+messagingSenderId: ""
+
+```
+
+
+Navegue en su consola a la carpeta de este proyecto e instale las dependencias
+
+```
+npm install
+
+```
+
+Cuando termine de instalar las dependencias escriba el comando
+
+```
+ng serve
+
+```
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
